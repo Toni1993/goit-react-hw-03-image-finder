@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
-import s from './ImageGallery.module.css';
+import { Gallery } from './ImageGallery.styled';
 import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import { GalleryItem } from './ImageGallery.styled';
 
 const ImageGallery = ({ imgData, showModal, name }) => {
   return (
-    <ul className={s.gallery}>
+    <Gallery>
       {imgData.map(item => (
-        <li className={s.ImageGalleryItem} key={item.id}>
+        <GalleryItem key={item.id}>
           <ImageGalleryItem
             onClick={() => showModal(item.largeUrl)}
             src={item.url}
             alt={name}
           />
-        </li>
+        </GalleryItem>
       ))}
-    </ul>
+    </Gallery>
   );
 };
 
@@ -24,7 +25,7 @@ ImageGallery.protoTypes = {
       id: PropTypes.number.isRequired,
       largeUrl: PropTypes.string.isRequired,
       url: PropTypes.string.isRequired,
-    }),
+    })
   ),
   showModal: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,

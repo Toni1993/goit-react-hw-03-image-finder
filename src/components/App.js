@@ -10,6 +10,7 @@ import Button from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Box } from './Box';
 
 class App extends Component {
   static propTypes = {
@@ -18,7 +19,7 @@ class App extends Component {
         id: PropTypes.string.isRequired,
         largeUrl: PropTypes.string.isRequired,
         url: PropTypes.string.isRequired,
-      }),
+      })
     ),
     name: PropTypes.string,
     showModal: PropTypes.bool,
@@ -67,6 +68,7 @@ class App extends Component {
           img: [...prevState.img, ...obj],
           currentPage: prevState.currentPage + 1,
         }));
+        console.log(this.state.totalHits);
       })
 
       .catch(error => {
@@ -80,18 +82,14 @@ class App extends Component {
             behavior: 'smooth',
             block: 'end',
           });
-        }
-        if (this.state.img.length === 0) {
-          toast.error('Enter the correct name');
-        }
 
-        if (
-          this.state.img.length > 0 &&
-          this.state.img.length === this.state.totalHits
-        ) {
-          toast.error('no more');
+          if (
+            this.state.img.length > 0 &&
+            this.state.img.length === this.state.totalHits
+          ) {
+            toast.error('no more');
+          }
         }
-
         this.setState({
           isLoading: false,
         });
@@ -127,7 +125,15 @@ class App extends Component {
             <img src={this.state.largeUrl} alt={this.state.name} />
           </Modal>
         )}
-
+        {this.state.img.length === 0 && (
+          <Box
+            display="flex"
+            alignItems="center"
+            flexDirection="column"
+            color="blue"
+            mt="40px"
+          >{`No images for your request ${this.state.name}`}</Box>
+        )}
         {this.state.error && (
           <h1>ops ... Something went wrong ... try again</h1>
         )}
@@ -145,6 +151,7 @@ class App extends Component {
         />
         {shouldRenderLoadMore && <Button onClick={this.fetchImg}></Button>}
         <ToastContainer autoClose={3000} />
+        <div id="modalRoot"></div>
       </>
     );
   }

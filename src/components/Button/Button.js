@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from './Button.module.css';
+import { ButtonSearch } from './Button.styled';
+import { Box } from 'components/Box';
 
 const Button = ({ onClick, children }) => {
   return (
-    <div className={s.btnContainer}>
-      <button type="button" onClick={onClick} className={s.Button}>
+    <Box display="flex" alignItems="center" flexDirection="column">
+      <ButtonSearch type="button" onClick={onClick}>
         {children}
         Load more
-      </button>
-    </div>
+      </ButtonSearch>
+    </Box>
   );
 };
 

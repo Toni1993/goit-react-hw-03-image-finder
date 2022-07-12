@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { SpinnerRoundOutlined } from 'spinners-react';
-import s from './Loader.module.css';
+import { Box } from 'components/Box';
 
 const Loader = ({ isLoading, size, color }) => (
-  <div className={s.Loader}>
+  <Box display="flex" alignItems="center" flexDirection="column">
     {isLoading && <SpinnerRoundOutlined size={size} color={color} />}
-  </div>
+  </Box>
 );
 
 Loader.propTypes = {

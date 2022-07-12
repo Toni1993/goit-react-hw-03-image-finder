@@ -1,14 +1,7 @@
-import s from './ImageGalleryItem.module.css';
+import { GalleryImage } from './ImageGalleryItem.styled';
 
 const ImageGalleryItem = ({ src, alt, onClick, largeUrl }) => {
-  return (
-    <img
-      className={s.ImageGalleryItemImage}
-      src={src}
-      alt={alt}
-      onClick={() => onClick(largeUrl)}
-    />
-  );
+  return <GalleryImage src={src} alt={alt} onClick={() => onClick(largeUrl)} />;
 };
 
 export default ImageGalleryItem;
