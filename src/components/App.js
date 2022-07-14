@@ -2,9 +2,9 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Searchbar from 'components/Searchbar';
-import ImageGallery from 'components/ImageGallery';
+import ImageGallery from 'components/Gallery/ImageGallery';
 
-import fetchImg from 'components/services/services';
+import fetchImg from 'services/services';
 import Modal from 'components/Modal/Modal';
 import Button from 'components/Button/Button';
 import Loader from 'components/Loader/Loader';

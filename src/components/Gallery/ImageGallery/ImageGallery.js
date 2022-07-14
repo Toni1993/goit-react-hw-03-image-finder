@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Gallery } from './ImageGallery.styled';
-import ImageGalleryItem from 'components/ImageGalleryItem/ImageGalleryItem';
+import ImageGalleryItem from 'components/Gallery/ImageGalleryItem/ImageGalleryItem';
 import { GalleryItem } from './ImageGallery.styled';
 
 const ImageGallery = ({ imgData, showModal, name }) => {
